@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.view.animation.OvershootInterpolator
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -387,9 +386,10 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_refresh -> {
-                println("imageResList.size = ${imageResList.size}")
-                println("myAdapter.images.size = ${myAdapter.images.size}")
                 myAdapter.notifyDataSetChanged()
+            }
+            R.id.action_scroll -> {
+                (myLayoutManager as StaggeredGridLayoutManager).scrollToPositionWithOffset(20, 0)
             }
             R.id.action_add -> {
                 myAdapter.addData(4)
